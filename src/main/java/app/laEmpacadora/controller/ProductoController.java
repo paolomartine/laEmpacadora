@@ -26,6 +26,8 @@ public class ProductoController {
         return productoService.getProductos();
     }
 
+
+
     @PostMapping
     public ResponseEntity<Object> registrarProducto(@RequestBody Producto producto) {
 
@@ -42,6 +44,12 @@ public class ProductoController {
     public ResponseEntity<Object> eliminarProducto(@PathVariable("productoId") Long id) {
         return this.productoService.deleteproducto(id);
     }
+
+    @GetMapping(path = "{productoId}")
+    public ResponseEntity<Object> buscarProducto(@PathVariable("productoId") Long id) {
+        return this.productoService.buscarProductoPorId(id);
+    }
+
 
 
 }
