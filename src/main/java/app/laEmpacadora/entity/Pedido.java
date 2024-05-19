@@ -27,16 +27,12 @@ public class Pedido {
     private Mesa id_mesa;
 
     private EnumEstado estado;
-    private LocalDateTime hora_preparacion;
-    private LocalDateTime hora_entrega;
-    private int tiempo_espera;
 
-    public Pedido(Cliente id_cliente, Mesa id_mesa, EnumEstado estado, LocalDateTime hora_preparacion, LocalDateTime hora_entrega, int tiempo_espera) {
+
+    public Pedido(Cliente id_cliente, Mesa id_mesa, EnumEstado estado) {
         this.id_cliente = id_cliente;
         this.id_mesa = id_mesa;
         this.estado = estado;
-        this.hora_preparacion = hora_preparacion;
-        this.hora_entrega = hora_entrega;
-        this.tiempo_espera = tiempo_espera;
+
     }
 }

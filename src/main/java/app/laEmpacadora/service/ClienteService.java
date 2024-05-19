@@ -33,15 +33,15 @@ public class ClienteService {
         dato = new HashMap<>();
         if (ban.isPresent() && cliente.getId() == null) {
             dato.put("error", true);
-            dato.put("message", "ya existe un cliente con ese contacto");
+            dato.put("message", "Ya existe un cliente con ese contacto");
             return new ResponseEntity<>(
                     dato,
                     HttpStatus.CONFLICT);
         }
-        dato.put("message", "se guardó con éxito");
+        dato.put("message", "Se guardó con éxito");
 
         if (cliente.getContacto() != null) {
-            dato.put("message", "se creó con éxito");
+            dato.put("message", "Se actualizó con éxito");
 
         }
         clienteRepository.save(cliente);
@@ -60,7 +60,7 @@ public class ClienteService {
         boolean existe = this.clienteRepository.existsById(id);
         if (!existe) {
             dato.put("error", true);
-            dato.put("mesagge", "No existe un detallepedido con ese id");
+            dato.put("mesagge", "No existe un cliente con ese id");
             return new ResponseEntity<>(
                     dato,
                     HttpStatus.CONFLICT);

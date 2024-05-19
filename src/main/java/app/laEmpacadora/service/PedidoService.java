@@ -3,6 +3,7 @@ package app.laEmpacadora.service;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import app.laEmpacadora.entity.Producto;
 import app.laEmpacadora.repository.PedidoRepository;
@@ -17,6 +18,7 @@ import app.laEmpacadora.entity.Pedido;
 
 @Service
 public class PedidoService {
+    HashMap<String, Object> dato;
     private final PedidoRepository pedidoRepository;
 
     @Autowired
@@ -53,6 +55,21 @@ public class PedidoService {
         return new ResponseEntity<>(
                 dato,
                 HttpStatus.ACCEPTED);
+    }
+
+    public ResponseEntity<Object> buscarPedidoPorId(Long id) {
+        dato = new HashMap<>();
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+        if (pedidoOptional.isPresent()) {
+            Pedido pedido = pedidoOptional.get();
+            dato.put("message", "Pedido encontrado");
+            dato.put("data", pedido);
+            return new ResponseEntity<>(dato, HttpStatus.OK);
+        } else {
+            dato.put("error", true);
+            dato.put("message", "No se encontró un pedido con ese ID");
+            return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
+        }
     }
 
 }

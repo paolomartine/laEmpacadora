@@ -40,10 +40,10 @@ public class ProductoService {
                     dato,
                     HttpStatus.CONFLICT);
         }
-        dato.put("message", "se guardó con éxito");
+        dato.put("message", "Se guardó con éxito");
 
         if (producto.getId() != null) {
-            dato.put("message", "se actualizó con éxito");
+            dato.put("message", "Se actualizó con éxito");
 
         }
         productoRepository.save(producto);
