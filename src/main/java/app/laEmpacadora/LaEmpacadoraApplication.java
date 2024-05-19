@@ -12,5 +12,4 @@ public class LaEmpacadoraApplication {
 		SpringApplication.run(LaEmpacadoraApplication.class, args);
 	}
 
-	
 }
