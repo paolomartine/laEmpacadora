@@ -17,15 +17,13 @@ public class Producto {
     private String nombre;
 
     private String url;
-    private int tiempoPreparacion;
     private Long precio;
-    private String ingredientes;
+    private String descripcion;
 
-    public Producto(String nombre, String url, int tiempoPreparacion, Long precio, String ingredientes) {
+    public Producto(String nombre, String url, Long precio, String descripcion) {
         this.nombre = nombre;
         this.url = url;
-        this.tiempoPreparacion = tiempoPreparacion;
         this.precio = precio;
-        this.ingredientes = ingredientes;
+        this.descripcion = descripcion;
     }
 }
