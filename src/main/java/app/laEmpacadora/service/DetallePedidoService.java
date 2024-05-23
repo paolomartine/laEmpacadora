@@ -63,7 +63,8 @@ public class DetallePedidoService {
             productoConCantidad.put("precio", productoInfo[3]);
             productoConCantidad.put("tiempoPreparacion", productoInfo[4]);
             productoConCantidad.put("url", productoInfo[5]);
-            productoConCantidad.put("cantidad", productoInfo[6]);
+            productoConCantidad.put("descripcion", productoInfo[6]);
+            productoConCantidad.put("cantidad", productoInfo[7]);
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;
