@@ -66,7 +66,7 @@ public class ClienteService {
                     HttpStatus.CONFLICT);
         }
         clienteRepository.deleteById( id);
-        dato.put("mesagge", "cliente eliminado");
+        dato.put("mesagge", "Cliente eliminado");
         return new ResponseEntity<>(
                 dato,
                 HttpStatus.ACCEPTED);
