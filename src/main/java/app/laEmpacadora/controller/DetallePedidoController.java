@@ -1,9 +1,10 @@
 package app.laEmpacadora.controller;
 
 import java.util.List;
+import java.util.Map;
 
-import app.laEmpacadora.entity.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,6 +44,12 @@ public class DetallePedidoController {
     public ResponseEntity<Object> eliminarDetallePedido(@PathVariable("detallepedidoId") Long id) {
 
         return this.detallePedidoService.deletedetallePedido(id);
+    }
+
+    @GetMapping("/{pedidoId}/productos")
+    public ResponseEntity<List<Map<String, Object>>> getProductosByPedidoId(@PathVariable("pedidoId") Long pedidoId) {
+        List<Map<String, Object>> productos = detallePedidoService.findProductosByPedidoId(pedidoId);
+        return new ResponseEntity<>(productos, HttpStatus.OK);
     }
 
 }
