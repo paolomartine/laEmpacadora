@@ -58,13 +58,11 @@ public class DetallePedidoService {
         for (Object[] productoInfo : productosRaw) {
             Map<String, Object> productoConCantidad = new HashMap<>();
             productoConCantidad.put("id", productoInfo[0]);
-            productoConCantidad.put("ingredientes", productoInfo[1]);
+            productoConCantidad.put("descripcion", productoInfo[1]);
             productoConCantidad.put("nombre", productoInfo[2]);
             productoConCantidad.put("precio", productoInfo[3]);
-            productoConCantidad.put("tiempoPreparacion", productoInfo[4]);
-            productoConCantidad.put("url", productoInfo[5]);
-            productoConCantidad.put("descripcion", productoInfo[6]);
-            productoConCantidad.put("cantidad", productoInfo[7]);
+            productoConCantidad.put("url", productoInfo[4]);
+            productoConCantidad.put("cantidad", productoInfo[5]);
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;

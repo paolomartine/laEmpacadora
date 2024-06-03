@@ -5,7 +5,8 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 public enum EnumEstado {
-    PEDIDO("EN_PREPARACION"),
+
+    PEDIDO("PEDIDO"),
     DESPACHADO("DESPACHADO"),
     PAGADO("PAGADO");
     private String estado;
