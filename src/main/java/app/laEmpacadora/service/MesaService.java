@@ -78,5 +78,20 @@ public class MesaService {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
     }
 
+    public ResponseEntity<Object> buscarMesaPorId(Long id) {
+        dato = new HashMap<>();
+        Optional<Mesa> mesaOptional = mesaRepository.findById(id);
+        if (mesaOptional.isPresent()) {
+            Mesa mesa = mesaOptional.get();
+            dato.put("message", "Mesa encontrada");
+            dato.put("data", mesa);
+            return new ResponseEntity<>(dato, HttpStatus.OK);
+        } else {
+            dato.put("error", true);
+            dato.put("message", "No se encontró una mesa con ese ID");
+            return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
+        }
+    }
+
 
 }

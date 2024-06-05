@@ -45,4 +45,9 @@ public class MesaController {
          return this.mesaService.deleteMesa(id);
      }
 
+    @GetMapping(path = "{mesaId}")
+    public ResponseEntity<Object> buscarMesaPorId(@PathVariable("mesaId") Long id) {
+        return this.mesaService.buscarMesaPorId(id);
+    }
+
 }

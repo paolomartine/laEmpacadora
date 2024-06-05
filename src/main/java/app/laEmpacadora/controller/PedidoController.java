@@ -45,4 +45,9 @@ public class PedidoController {
 
         return this.pedidoService.deletepedido(id);
     }
+
+    @GetMapping(path = "{pedidoId}")
+    public ResponseEntity<Object> buscarPedidoPorId(@PathVariable("pedidoId") Long id) {
+        return this.pedidoService.buscarPedidoPorId(id);
+    }
 }
