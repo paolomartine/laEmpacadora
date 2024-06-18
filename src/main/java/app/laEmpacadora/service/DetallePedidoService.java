@@ -51,20 +51,31 @@ public class DetallePedidoService {
             return new ResponseEntity<>(dato, HttpStatus.ACCEPTED);
     }
 
-    public List<Map<String, Object>> findProductosByPedidoId(Long pedidoId) {
+     public List<Map<String, Object>> findProductosByPedidoId(Long pedidoId) {
         List<Map<String, Object>> productosConCantidad = new ArrayList<>();
         List<Object[]> productosRaw = detallePedidoRepository.findProductosByPedidoId(pedidoId);
 
         for (Object[] productoInfo : productosRaw) {
             Map<String, Object> productoConCantidad = new HashMap<>();
             productoConCantidad.put("id", productoInfo[0]);
-            productoConCantidad.put("descripcion", productoInfo[1]); //descripcion
-            productoConCantidad.put("nombre", productoInfo[2]); //nombre
-            productoConCantidad.put("precio", productoInfo[3]); //precio
+            productoConCantidad.put("precio", productoInfo[1]); //precio
+            productoConCantidad.put("descripcion", productoInfo[2]); //descripcion
+            productoConCantidad.put("nombre", productoInfo[3]); //nombre
             productoConCantidad.put("url", productoInfo[4]);
             productoConCantidad.put("cantidad", productoInfo[5]);
+            productoConCantidad.put("observacion", productoInfo[6]); // observación del detalle del pedido
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;
     }
+
+
+
+
+
+
+
+
+
+
 }

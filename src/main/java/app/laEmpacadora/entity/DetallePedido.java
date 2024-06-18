@@ -30,9 +30,12 @@ public class DetallePedido {
 
     private Long cantidad;
 
-    public DetallePedido(Pedido id_pedido, Producto id_producto, Long cantidad) {
+    private String observacion;
+
+    public DetallePedido(Pedido id_pedido, Producto id_producto, Long cantidad, String observacion) {
         this.id_pedido = id_pedido;
         this.id_producto = id_producto;
         this.cantidad = cantidad;
+        this.observacion = observacion;
     }
 }

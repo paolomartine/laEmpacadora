@@ -13,10 +13,14 @@ import java.util.Optional;
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Long> {
     Optional<DetallePedido> findDetallePedidoById(Long id);
 
-    @Query(value = "SELECT p.*, dp.cantidad AS cantidad " +
+        @Query(value = "SELECT p.*, dp.cantidad AS cantidad, dp.observacion " +
             "FROM detalle_pedido dp " +
             "JOIN producto p ON dp.id_producto_id = p.id " +
             "WHERE dp.id_pedido_id = :pedidoId",
             nativeQuery = true)
     List<Object[]> findProductosByPedidoId(@Param("pedidoId") Long pedidoId);
+
+
+
+
 }
