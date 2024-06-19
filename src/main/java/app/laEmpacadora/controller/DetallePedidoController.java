@@ -36,13 +36,11 @@ public class DetallePedidoController {
 
     @PutMapping
     public ResponseEntity<Object> actualizarDetallePedido(@RequestBody DetallePedido detallePedido) {
-
         return this.detallePedidoService.newDetallePedido(detallePedido);
     }
 
     @DeleteMapping(path = "{detallepedidoId}")
     public ResponseEntity<Object> eliminarDetallePedido(@PathVariable("detallepedidoId") Long id) {
-
         return this.detallePedidoService.deletedetallePedido(id);
     }
 
