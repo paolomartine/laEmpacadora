@@ -46,7 +46,7 @@ import java.util.Map;
         }
 
         @GetMapping("/{domicilioId}/productos")
-        public ResponseEntity<List<Map<String, Object>>> getProductosByDomicilioId(@PathVariable("DomicilioId") Long domicilioId) {
+        public ResponseEntity<List<Map<String, Object>>> getProductosByDomicilioId(@PathVariable("domicilioId") Long domicilioId) {
             List<Map<String, Object>> productos = detallePedidoDomService.findProductosByDomicilioId(domicilioId);
             return new ResponseEntity<>(productos, HttpStatus.OK);
         }

@@ -1,6 +1,6 @@
 package app.laEmpacadora.repository;
 
-import app.laEmpacadora.entity.DetallePedido;
+
 import app.laEmpacadora.entity.DetallePedidoDom;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -15,7 +15,7 @@ public interface DetallePedidoDomRepository extends JpaRepository<DetallePedidoD
     Optional<DetallePedidoDom> findDetallePedidoDomById(Long id);
 
     @Query(value = "SELECT p.*, dp.cantidad AS cantidad, dp.observacion " +
-            "FROM detalle_pedido dp " +
+            "FROM detalle_pedido_dom dp " +
             "JOIN producto p ON dp.id_producto_id = p.id " +
             "WHERE dp.id_domicilio_id = :domicilioId",
             nativeQuery = true)

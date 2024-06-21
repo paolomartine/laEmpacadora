@@ -27,6 +27,7 @@ public class DetallePedidoDom {
     private Producto id_producto;
 
     private Long cantidad;
+    private String observacion;
 
     public DetallePedidoDom(Domicilio id_domicilio, Producto id_producto, Long cantidad, String observacion) {
         this.id_domicilio = id_domicilio;
@@ -35,7 +36,7 @@ public class DetallePedidoDom {
         this.observacion = observacion;
     }
 
-    private String observacion;
+
 
 
 }
