@@ -29,14 +29,13 @@ public class DetallePedidoDom {
     private Long cantidad;
     private String observacion;
 
-    public DetallePedidoDom(Domicilio id_domicilio, Producto id_producto, Long cantidad, String observacion) {
+    private EnumEstado estado;
+
+    public DetallePedidoDom(Domicilio id_domicilio, Producto id_producto, Long cantidad, String observacion, EnumEstado estado) {
         this.id_domicilio = id_domicilio;
         this.id_producto = id_producto;
         this.cantidad = cantidad;
         this.observacion = observacion;
+        this.estado = estado;
     }
-
-
-
-
 }

@@ -32,10 +32,13 @@ public class DetallePedido {
 
     private String observacion;
 
-    public DetallePedido(Pedido id_pedido, Producto id_producto, Long cantidad, String observacion) {
+    private EnumEstado estadoDetalle;
+
+    public DetallePedido(Pedido id_pedido, Producto id_producto, Long cantidad, String observacion, EnumEstado estadoDetalle) {
         this.id_pedido = id_pedido;
         this.id_producto = id_producto;
         this.cantidad = cantidad;
         this.observacion = observacion;
+        this.estadoDetalle = estadoDetalle;
     }
 }

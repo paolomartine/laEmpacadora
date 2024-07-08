@@ -63,6 +63,7 @@ public class DetallePedidoDomService {
             productoConCantidad.put("url", productoInfo[4]);
             productoConCantidad.put("cantidad", productoInfo[5]);
             productoConCantidad.put("observacion", productoInfo[6]); // observación del detalle del pedido
+            //productoConCantidad.put("estadoDetalle", productoInfo[7]);
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;
