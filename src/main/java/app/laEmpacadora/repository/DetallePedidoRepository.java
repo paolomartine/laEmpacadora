@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Long> {
     Optional<DetallePedido> findDetallePedidoById(Long id);
 
-    @Query(value = "SELECT p.*, dp.cantidad AS cantidad, dp.observacion " +  // Agrega dp.estado a la consulta
+    @Query(value = "SELECT p.*, dp.cantidad AS cantidad, dp.observacion, dp.estado_detalle " +
             "FROM detalle_pedido dp " +
             "JOIN producto p ON dp.id_producto_id = p.id " +
             "WHERE dp.id_pedido_id = :pedidoId",

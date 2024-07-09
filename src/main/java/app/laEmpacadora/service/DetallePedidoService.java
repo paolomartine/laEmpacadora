@@ -64,7 +64,7 @@ public class DetallePedidoService {
             productoConCantidad.put("url", productoInfo[4]);
             productoConCantidad.put("cantidad", productoInfo[5]);
             productoConCantidad.put("observacion", productoInfo[6]); // observación del detalle del pedido
-            //productoConCantidad.put("estadoDetalle",productoInfo[7]);//estado del detalle del pedido
+            productoConCantidad.put("estado_detalle",productoInfo[7]);//estado del detalle del pedido
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;
