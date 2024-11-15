@@ -30,13 +30,11 @@ public class PedidoController {
 
     @PostMapping
     public ResponseEntity<Object> registrarPedido(@RequestBody Pedido pedido) {
-
         return this.pedidoService.newPedido(pedido);
     }
 
     @PutMapping
     public ResponseEntity<Object> actualizarPedido(@RequestBody Pedido pedido) {
-
         return this.pedidoService.newPedido(pedido);
     }
 

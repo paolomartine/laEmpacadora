@@ -35,7 +35,7 @@ public class ProductoService {
         dato = new HashMap<>();
         if (res.isPresent() && producto.getId() == null) {
             dato.put("error", true);
-            dato.put("message", "ya existe un producto con ese nombre");
+            dato.put("message", "Ya existe un producto con ese nombre");
             return new ResponseEntity<>(
                     dato,
                     HttpStatus.CONFLICT);

@@ -1,10 +1,9 @@
 package app.laEmpacadora.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import app.laEmpacadora.entity.EnumEstado;
+import app.laEmpacadora.entity.Producto;
 import app.laEmpacadora.repository.DetallePedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +14,7 @@ import app.laEmpacadora.entity.DetallePedido;
 
 @Service
 public class DetallePedidoService {
+    HashMap<String, Object> dato;
 
     private final DetallePedidoRepository detallePedidoRepository;
 
@@ -70,13 +70,31 @@ public class DetallePedidoService {
         return productosConCantidad;
     }
 
+   /* public boolean actualizarEstadoDetalleProducto(Long pedidoId, Long productoId, String nuevoEstado) {
+        Optional<DetallePedido> detallePedidoOptional = detallePedidoRepository.findByIdAndPedidoId(productoId, pedidoId);
 
+        if (detallePedidoOptional.isPresent()) {
+            DetallePedido detallePedido = detallePedidoOptional.get();
+            detallePedido.setEstadoDetalle(EnumEstado.valueOf(nuevoEstado));  // Actualizar el estado a "DESPACHADO"
+            detallePedidoRepository.save(detallePedido);  // Guardar los cambios
+            return true;
+        }
+        return false;
+    }*/
 
-
-
-
-
-
-
+    public ResponseEntity<Object> actualizarEstadoDetalle(Long id, EnumEstado nuevoEstado) {
+        Optional<DetallePedido> detallePedidoOpt = detallePedidoRepository.findById(id);
+        if (detallePedidoOpt.isPresent()) {
+            DetallePedido detallePedido = detallePedidoOpt.get();
+            detallePedido.setEstadoDetalle(nuevoEstado);
+            detallePedidoRepository.save(detallePedido);
+            return new ResponseEntity<>(detallePedido, HttpStatus.OK);
+        } else {
+            HashMap<String, Object> error = new HashMap<>();
+            error.put("error", true);
+            error.put("message", "DetallePedido no encontrado");
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

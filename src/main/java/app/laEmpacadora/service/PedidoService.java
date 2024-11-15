@@ -34,7 +34,7 @@ public class PedidoService {
         HashMap<String, Object> dato;
         dato = new HashMap<>();
         pedidoRepository.save(pedido);
-        dato.put("message", "se guardó con éxito");
+        dato.put("message", "Se guardó con éxito");
         dato.put("data", pedido);
         return new ResponseEntity<>(pedido, HttpStatus.CREATED);
     }
