@@ -92,4 +92,20 @@ public class MesaService {
             return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
         }
     }
+
+    public ResponseEntity<Object> actualizarDisponibilidad(Long mesaId, Boolean disponibilidad) {
+        // Buscar la mesa por su ID
+        Mesa mesa = mesaRepository.findById(mesaId).orElse(null);
+        if (mesa == null) {
+            return ResponseEntity.status(404).body("Mesa no encontrada.");
+        }
+
+        // Actualizar solo el campo 'disponibilidad'
+        mesa.setDisponibilidad(disponibilidad);
+
+        // Guardar la mesa actualizada
+        mesaRepository.save(mesa);
+
+        return ResponseEntity.ok("Disponibilidad de la mesa actualizada exitosamente.");
+    }
 }

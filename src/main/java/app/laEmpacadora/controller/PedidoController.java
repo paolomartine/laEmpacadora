@@ -44,6 +44,12 @@ public class PedidoController {
         return this.pedidoService.deletepedido(id);
     }
 
+    // Usamos PUT para el borrado lógico
+    @PutMapping(path = "{pedidoId}/borrar")
+    public ResponseEntity<Object> borrarLogicoPedido(@PathVariable("pedidoId") Long id) {
+        return this.pedidoService.borrarLogicoPedido(id); // Llamar al servicio para marcar como borrado
+    }
+
     @GetMapping(path = "{pedidoId}")
     public ResponseEntity<Object> buscarPedidoPorId(@PathVariable("pedidoId") Long id) {
         return this.pedidoService.buscarPedidoPorId(id);

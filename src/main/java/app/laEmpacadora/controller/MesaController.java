@@ -50,4 +50,16 @@ public class MesaController {
         return this.mesaService.buscarMesaPorId(id);
     }
 
+    @PutMapping(path = "{mesaId}/disponibilidad")
+    public ResponseEntity<Object> actualizarDisponibilidad(@PathVariable("mesaId") Long mesaId, @RequestBody Map<String, Boolean> disponibilidad) {
+        // Recibimos un Map con la clave "disponibilidad" y su valor (true/false)
+        Boolean disponibilidadValue = disponibilidad.get("disponibilidad");
+        if (disponibilidadValue == null) {
+            return ResponseEntity.badRequest().body("El campo 'disponibilidad' es requerido.");
+        }
+
+        // Llamamos al servicio para actualizar solo la disponibilidad
+        return this.mesaService.actualizarDisponibilidad(mesaId, disponibilidadValue);
+    }
+
 }

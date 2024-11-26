@@ -28,10 +28,13 @@ public class Pedido {
 
     private EnumEstado estado;
 
-    public Pedido(Cliente id_cliente, Mesa id_mesa, EnumEstado estado) {
+    private boolean borrado;
+
+    public Pedido(Cliente id_cliente, Mesa id_mesa, EnumEstado estado, boolean borrado) {
         this.id_cliente = id_cliente;
         this.id_mesa = id_mesa;
         this.estado = estado;
+        this.borrado = borrado;
 
     }
 }

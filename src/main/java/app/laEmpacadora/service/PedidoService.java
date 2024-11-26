@@ -57,9 +57,29 @@ public class PedidoService {
                 HttpStatus.ACCEPTED);
     }
 
-    public ResponseEntity<Object> buscarPedidoPorId(Long id) {
+    // Método para realizar un "borrado lógico"
+    public ResponseEntity<Object> borrarLogicoPedido(Long id) {
         dato = new HashMap<>();
         Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+        if (!pedidoOptional.isPresent()) {
+            dato.put("error", true);
+            dato.put("message", "No se encontró un pedido con ese ID");
+            return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
+        }
+
+        Pedido pedido = pedidoOptional.get();
+        // Marcamos el pedido como borrado lógico
+        pedido.setBorrado(true);
+        pedidoRepository.save(pedido);
+
+        dato.put("message", "Pedido marcado como borrado");
+        dato.put("data", pedido);
+        return new ResponseEntity<>(dato, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Object> buscarPedidoPorId(Long id) {
+        dato = new HashMap<>();
+        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id); // Cambiado a findById
         if (pedidoOptional.isPresent()) {
             Pedido pedido = pedidoOptional.get();
             dato.put("message", "Pedido encontrado");
@@ -71,6 +91,7 @@ public class PedidoService {
             return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
         }
     }
+
 
 }
 
