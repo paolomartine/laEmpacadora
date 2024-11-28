@@ -52,20 +52,6 @@ public class DetallePedidoController {
         return new ResponseEntity<>(productos, HttpStatus.OK);
     }
 
-    /*@PutMapping("/{pedidoId}/productos/{productoId}")
-    public ResponseEntity<Object> actualizarEstadoDetalleProducto(
-            @PathVariable("pedidoId") Long pedidoId,
-            @PathVariable("productoId") Long productoId) {
-
-        boolean updated = detallePedidoService.actualizarEstadoDetalleProducto(pedidoId, productoId, "DESPACHADO");
-
-        if (updated) {
-            return new ResponseEntity<>("Estado del producto actualizado a 'DESPACHADO'", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("No se pudo actualizar el estado", HttpStatus.BAD_REQUEST);
-        }
-    }*/
-
     @PutMapping("/{id}/estado")
     public ResponseEntity<Object> actualizarEstadoDetalle(
             @PathVariable("id") Long id,

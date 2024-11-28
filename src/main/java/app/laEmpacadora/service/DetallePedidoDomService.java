@@ -1,16 +1,15 @@
 package app.laEmpacadora.service;
 
+import app.laEmpacadora.entity.DetallePedido;
 import app.laEmpacadora.entity.DetallePedidoDom;
+import app.laEmpacadora.entity.EnumEstado;
 import app.laEmpacadora.repository.DetallePedidoDomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class DetallePedidoDomService {
@@ -63,10 +62,25 @@ public class DetallePedidoDomService {
             productoConCantidad.put("url", productoInfo[4]);
             productoConCantidad.put("cantidad", productoInfo[5]);
             productoConCantidad.put("observacion", productoInfo[6]); // observación del detalle del pedido
-            //productoConCantidad.put("estadoDetalle", productoInfo[7]);
+            productoConCantidad.put("estado", productoInfo[7]);
             productosConCantidad.add(productoConCantidad);
         }
         return productosConCantidad;
     }
 
+
+    public ResponseEntity<Object> actualizarEstadoDetalleDom(Long id, EnumEstado nuevoEstado) {
+        Optional<DetallePedidoDom> detallePedidoDomOpt = detallePedidoDomRepository.findById(id);
+        if (detallePedidoDomOpt.isPresent()) {
+            DetallePedidoDom detallePedidoDom = detallePedidoDomOpt.get();
+            detallePedidoDom.setEstado(nuevoEstado);
+            detallePedidoDomRepository.save(detallePedidoDom);
+            return new ResponseEntity<>(detallePedidoDom, HttpStatus.OK);
+        } else {
+            HashMap<String, Object> error = new HashMap<>();
+            error.put("error", true);
+            error.put("message", "DetallePedidoDom no encontrado");
+            return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        }
+    }
 }

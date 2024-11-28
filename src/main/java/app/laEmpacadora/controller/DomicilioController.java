@@ -47,4 +47,10 @@ import java.util.List;
         public ResponseEntity<Object> buscarDomicilioPorId(@PathVariable("domicilioId") Long id) {
             return this.domicilioService.buscarDomicilioPorId(id);
         }
+        // Usamos PUT para el borrado lógico
+        @PutMapping(path = "{domicilioId}/borrar")
+        public ResponseEntity<Object> borrarLogicoDomicilio(@PathVariable("domicilioId") Long id) {
+            return this.domicilioService.borrarLogicoDomicilio(id); // Llamar al servicio para marcar como borrado
+        }
+
 }

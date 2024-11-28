@@ -2,6 +2,7 @@ package app.laEmpacadora.service;
 
 import app.laEmpacadora.entity.Domicilio;
 
+import app.laEmpacadora.entity.Pedido;
 import app.laEmpacadora.repository.DomicilioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -68,6 +69,25 @@ public class DomicilioService {
         }
     }
 
+    // Método para realizar un "borrado lógico"
+    public ResponseEntity<Object> borrarLogicoDomicilio(Long id) {
+        dato = new HashMap<>();
+        Optional<Domicilio> domicilioOptional = domicilioRepository.findById(id);
+        if (!domicilioOptional.isPresent()) {
+            dato.put("error", true);
+            dato.put("message", "No se encontró un domicilio con ese ID");
+            return new ResponseEntity<>(dato, HttpStatus.NOT_FOUND);
+        }
+
+        Domicilio domicilio = domicilioOptional.get();
+        // Marcamos el domicilio como borrado lógico
+        domicilio.setBorrado(true);
+        domicilioRepository.save(domicilio);
+
+        dato.put("message", "Domicilio marcado como borrado");
+        dato.put("data", domicilio);
+        return new ResponseEntity<>(dato, HttpStatus.OK);
+    }
 
 }
 

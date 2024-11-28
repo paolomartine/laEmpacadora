@@ -27,6 +27,7 @@ public class DetallePedidoDom {
     private Producto id_producto;
 
     private Long cantidad;
+
     private String observacion;
 
     private EnumEstado estado;

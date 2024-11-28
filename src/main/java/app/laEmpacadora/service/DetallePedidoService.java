@@ -70,18 +70,6 @@ public class DetallePedidoService {
         return productosConCantidad;
     }
 
-   /* public boolean actualizarEstadoDetalleProducto(Long pedidoId, Long productoId, String nuevoEstado) {
-        Optional<DetallePedido> detallePedidoOptional = detallePedidoRepository.findByIdAndPedidoId(productoId, pedidoId);
-
-        if (detallePedidoOptional.isPresent()) {
-            DetallePedido detallePedido = detallePedidoOptional.get();
-            detallePedido.setEstadoDetalle(EnumEstado.valueOf(nuevoEstado));  // Actualizar el estado a "DESPACHADO"
-            detallePedidoRepository.save(detallePedido);  // Guardar los cambios
-            return true;
-        }
-        return false;
-    }*/
-
     public ResponseEntity<Object> actualizarEstadoDetalle(Long id, EnumEstado nuevoEstado) {
         Optional<DetallePedido> detallePedidoOpt = detallePedidoRepository.findById(id);
         if (detallePedidoOpt.isPresent()) {

@@ -1,6 +1,7 @@
 package app.laEmpacadora.controller;
 
 import app.laEmpacadora.entity.DetallePedidoDom;
+import app.laEmpacadora.entity.EnumEstado;
 import app.laEmpacadora.service.DetallePedidoDomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,6 +50,13 @@ import java.util.Map;
         public ResponseEntity<List<Map<String, Object>>> getProductosByDomicilioId(@PathVariable("domicilioId") Long domicilioId) {
             List<Map<String, Object>> productos = detallePedidoDomService.findProductosByDomicilioId(domicilioId);
             return new ResponseEntity<>(productos, HttpStatus.OK);
+        }
+
+        @PutMapping("/{id}/estado")
+        public ResponseEntity<Object> actualizarEstadoDetalle(
+                @PathVariable("id") Long id,
+                @RequestParam("estado") EnumEstado nuevoEstado) {
+            return detallePedidoDomService.actualizarEstadoDetalleDom(id, nuevoEstado);
         }
 
     }

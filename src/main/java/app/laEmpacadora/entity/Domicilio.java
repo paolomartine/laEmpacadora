@@ -25,8 +25,11 @@ public class Domicilio {
 
     private EnumEstado estado;
 
-    public Domicilio(Cliente id_cliente, EnumEstado estado) {
+    private boolean borrado;
+
+    public Domicilio(Cliente id_cliente, EnumEstado estado, boolean borrado) {
         this.id_cliente = id_cliente;
         this.estado = estado;
+        this.borrado = borrado;
     }
 }
